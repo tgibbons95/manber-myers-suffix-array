@@ -1,4 +1,5 @@
 #include <functional>
+#include <vector>
 
 namespace CSE_584A
 {
@@ -17,6 +18,10 @@ namespace CSE_584A
       SuperMaximalMatchData(char* repeat, int length) : repeat(repeat), length(length) {}
    };
 
-   void SuperMaximal(const char* textFile, std::function<void(const SuperMaximalMatchData&)> outputMethod);
+   void FindSuperMaximalRepeats(const char* S, const int* A, const int* L, int n, std::function<void(const SuperMaximalMatchData&)> outputMethod);
+
+   void ManberMyersBuild(const char* S, int* A, int* G, int n);
+
+   void ComputeAdjacentLcp(const char* S, const int* A, const int* G, int* L, int n);
 
 }
