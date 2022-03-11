@@ -94,6 +94,7 @@ namespace CSE_584A
                   if (it != pretextCharList.end())
                   {
                      superMaximal = false;
+                     break;
                   }
                   else
                   {

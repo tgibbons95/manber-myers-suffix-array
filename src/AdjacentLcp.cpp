@@ -15,7 +15,7 @@ namespace CSE_584A
          else
          {
             int j = A[k - 1];
-            while (i + h <= n && j + h <= n && S[i + h] == S[j + h])
+            while (i + h < n && j + h < n && S[i + h] == S[j + h])
             {
                h++;
             }
