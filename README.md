@@ -43,8 +43,8 @@ Interesting implementation designs
 
 ### Output
 
-* [Burrows Wheeler Transform](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/output/BurrowsWheelerTransformOutput.txt)
-* [Supermaximal Matches](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/output/SuperMaximalMatches.txt)
+* [Burrows Wheeler Transform](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/main/output/BurrowsWheelerTransformOutput.txt)
+* [Supermaximal Matches](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/main/output/SuperMaximalMatches.txt)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -67,7 +67,7 @@ This project requires at least C++11 because of calls to std::stack::emplace
 
 ### Installation
 
-A few example installations are provided for compilers [clang](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-clang.sh), [gcc](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-gcc.sh), [minGW](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-minGW.sh), and [msvc](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-msvc.sh).
+A few example installations are provided for compilers [clang](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/main/build-clang.sh), [gcc](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/main/build-gcc.sh), [minGW](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/main/build-minGW.sh), and [msvc](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/main/build-msvc.sh).
 
 Running any of these scripts will create a build and install directory with a subdirectory with the chosen compiler. The install should look like the following (example done with Windows)
 
