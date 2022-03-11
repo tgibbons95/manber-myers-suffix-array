@@ -1,6 +1,7 @@
 #include "SuperMaximal.h"
 
 #include <algorithm>
+#include <list>
 #include <stack>
 
 namespace CSE_584A
