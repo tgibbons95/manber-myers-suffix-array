@@ -1,0 +1,3 @@
+$ at: 74291361
+First 50 chars of BWT: attcctaaacaaacacaacaacaaacaacaaaataaaaaaacaaaaaaac
+Last 50 chars of BWT: tttttttgtttatctttttttttttactttttatctttagtctttttaca

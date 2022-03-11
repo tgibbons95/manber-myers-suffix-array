@@ -7,6 +7,11 @@ namespace CSE_584A
 {
    void ComputeSuffixArray(const char* S, int* A, int* G, int n)
    {
+      int* Gp = new (std::nothrow) int[n];
+      if (Gp == nullptr)
+      {
+         return;
+      }
       // Create initial, unsorted suffix array A from S
       for (int i = 0; i < n; ++i)
       {
@@ -58,8 +63,8 @@ namespace CSE_584A
             lastStart = groupInterval.first;
             for (size_t j = groupInterval.first; j <= groupInterval.second; ++j)
             {
-               G[A[j]] = static_cast<int>(std::lower_bound(A + groupInterval.first, A + groupInterval.second + 1, A[j], compareGroup) - A);
-               if (G[A[j]] != G[A[lastStart]])
+               Gp[A[j]] = static_cast<int>(std::lower_bound(A + groupInterval.first, A + groupInterval.second + 1, A[j], compareGroup) - A);
+               if (Gp[A[j]] != Gp[A[lastStart]])
                {
                   if (j - lastStart > 1)
                   {
@@ -68,12 +73,17 @@ namespace CSE_584A
                   lastStart = j;
                }
             }
-            if (G[A[groupInterval.second]] == G[A[lastStart]] && groupInterval.second - lastStart > 0)
+            if (Gp[A[groupInterval.second]] == Gp[A[lastStart]] && groupInterval.second - lastStart > 0)
             {
                groupIntervals.emplace(lastStart, groupInterval.second);
+            }
+            for (size_t j = groupInterval.first; j <= groupInterval.second; ++j)
+            {
+               G[A[j]] = Gp[A[j]];
             }
          }
          h <<= 1;
       }
+      delete[] Gp;
    }
 }
