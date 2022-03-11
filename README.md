@@ -6,6 +6,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#output">Output</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -25,14 +26,27 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This projects implements the Aho-Corasick Algorithm for finding all positions within a text string where any string from a dictionary of patterns matches. The algorithm runs in time O(|L| + |T| + h) where |L| is the sum of all pattern lengths in the dictionary and h is the total number of matches. Preprocessing consists of a matching trie that has space proportional to O(|L|). 
+This projects implements a Super Maximal Repeat Algorithm for finding all occurrences of a super maximal repeat. The repeat algorithm works with the below implementation
+* Compute suffix array and rank array using Manber-Myers construction of suffix arrays and saving the group array.
+* Compute the adjacent lcp array using the suffix array and rank array.
+* Compute the super maximal repeats with a post order visit of a simulated suffix tree. Only processing relevant super maximal nodes.
+* Burrows Wheeler Transform was also implemented within the library.
 
-Some interesting implementation choices to uphold some of the time and space requirements above:
-* Keeping the space proportional to O(|L|) requires that no state in the trie stores a list of outputting states. Take the example patterns ACGTC, CGTC, GTC. When ACGTC is in the text string, all 3 patterns will match. Each state in the trie will have a pointer to the next output state. If that next output state is null, then there is no more matches. The example above will have the state corresponding to the second C in ACGTC will have a next output state to the second C in CGTC and that will have a next output state to GTC. This keeps the space requirement by not having 3 output items in one node and 2 in the next and so on.
+Current todos
+* I would like to implement an extension that does not require a G prime array to be initialized. Current implementation does use this array that may be a little unnecessary.
+
+Interesting implementation designs
+* An extension to the suffix array algorithm avoids iterating over singleton groups by keeping track of group intervals and creating new ones.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Output
 
+* [Burrows Wheeler Transform](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/output/BurrowsWheelerTransformOutput.txt)
+* [Supermaximal Matches](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/output/SuperMaximalMatches.txt)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
@@ -49,26 +63,29 @@ Some interesting implementation choices to uphold some of the time and space req
 
 ### Prerequisites
 
-This project requires at least C++14 because of calls to std::make_unique
+This project requires at least C++11 because of calls to std::stack::emplace
 
 ### Installation
 
-A few example installations are provided for compilers [clang](https://github.com/wustl-cse584/homework-1-problem-4-ThomasGibbonsIV/blob/master/build-clang.sh), [gcc](https://github.com/wustl-cse584/homework-1-problem-4-ThomasGibbonsIV/blob/master/build-gcc.sh), [minGW](https://github.com/wustl-cse584/homework-1-problem-4-ThomasGibbonsIV/blob/master/build-minGW.sh), and [msvc](https://github.com/wustl-cse584/homework-1-problem-4-ThomasGibbonsIV/blob/master/build-msvc.sh).
+A few example installations are provided for compilers [clang](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-clang.sh), [gcc](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-gcc.sh), [minGW](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-minGW.sh), and [msvc](https://github.com/wustl-cse584/homework-2-problem-4-ThomasGibbonsIV/blob/master/build-msvc.sh).
 
 Running any of these scripts will create a build and install directory with a subdirectory with the chosen compiler. The install should look like the following (example done with Windows)
 
 * include
-  * AhoCorasick.h
+  * AdjacentLcp.h
+  * BurrowsWheelerTransform.h
+  * SuffixArray.h
+  * SuperMaximal.h
 * lib
-  * AhoCorasickLib.lib
+  * SuperMaximalLib.lib
 * test
-  * AhoCorasickTest.exe
+  * SuperMaximalTest.exe
   
 ### Usage
 
-To run simply place the corpus file `hg38_part.txt` and `pat[1-5].txt` in the same directory as the executable and then kick off the executable. If these files aren't included, then it will just run against two smaller test case inputs.
+To run simply place the sequence file `human-seq.txt` in the same directory as the executable and then kick off the executable. If these files aren't included, then it will just run against smaller test case inputs.
 
-./AhoCorasickTest.exe
+./SuperMaximalTest.exe
 
 
 
