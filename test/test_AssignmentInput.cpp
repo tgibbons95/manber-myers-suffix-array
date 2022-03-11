@@ -131,28 +131,9 @@ namespace CSE_584A
                ComputeSuffixArray(S.c_str(), A, G, n);
                std::cout << "Finished Computing Suffix Array" << std::endl;
 
-               for (int i = 0; i < n; ++i)
-               {
-                  if (A[i] < 0)
-                  {
-                     std::cout << "A out of bounds at " << i << std::endl;
-                  }
-                  if (G[i] < 0)
-                  {
-                     std::cout << "G out of bounds at " << i << std::endl;
-                  }
-               }
                std::cout << "Started Computing Adjacent Lcp" << std::endl;
                ComputeAdjacentLcp(S.c_str(), A, G, L, n);
                std::cout << "Finished Computing Adjacent Lcp" << std::endl;
-
-               for (int i = 0; i < n; ++i)
-               {
-                  if (L[i] < 0)
-                  {
-                     std::cout << "L out of bounds at " << i << std::endl;
-                  }
-               }
             }
             else
             {
