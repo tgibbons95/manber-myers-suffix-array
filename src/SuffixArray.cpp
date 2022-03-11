@@ -1,15 +1,11 @@
-#include "ManberMyersBuild.h"
+#include "SuffixArray.h"
 
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <queue>
-#include <memory>
 #include <algorithm>
+#include <queue>
 
 namespace CSE_584A
 {
-   void ManberMyersBuild(const char* S, int* A, int* G, int n)
+   void ComputeSuffixArray(const char* S, int* A, int* G, int n)
    {
       // Create initial, unsorted suffix array A from S
       for (int i = 0; i < n; ++i)
@@ -21,7 +17,7 @@ namespace CSE_584A
       auto compareFirstChar = [S](int lhs, int rhs){ return S[lhs] < S[rhs];};
       std::sort(A, A + n, compareFirstChar);
 
-      // Assign group array to index of leftmost entry in A with same 1st char as A[i]
+      // Assign group array to index of leftmost entry in A with same 1st char as A[i] while keeping track of groups of more than 1.
       std::queue<std::pair<int, int>> groupIntervals;
       int lastStart = 0;
       for (int i = 0; i < n; ++i)
@@ -79,36 +75,5 @@ namespace CSE_584A
          }
          h <<= 1;
       }
-   }
-
-   void ComputeAdjacentLcp(const char* S, const int* A, const int* G, int* L, int n)
-   {
-      int h = 0;
-      for (int i = 0; i < n; ++i)
-      {
-         int k = G[i];
-         if (k == 0)
-         {
-            L[k] = 0;
-         }
-         else
-         {
-            int j = A[k - 1];
-            while (i + h <= n && j + h <= n && S[i + h] == S[j + h])
-            {
-               h++;
-            }
-            L[k] = h;
-         }
-         if (h > 0)
-         {
-            h--;
-         }
-      }
-   }
-
-   void FindSuperMaximalRepeats(const char* S, const int* A, const int* L, int n, std::function<void(const SuperMaximalMatchData&)> outputMethod)
-   {
-      
    }
 }
