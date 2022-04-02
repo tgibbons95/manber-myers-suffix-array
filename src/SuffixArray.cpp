@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   SuffixArray.cpp
+ * @brief  Provides method implementations related to the suffix array of a string
+ *
+ * @author Thomas Gibbons
+ * @date   Mar 2022
+ *********************************************************************/
+
 #include "SuffixArray.h"
 
 #include <algorithm>

@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   SuperMaximal.cpp
+ * @brief  Provides method implementations related to finding the super maximal repeats of a string
+ *
+ * @author Thomas Gibbons
+ * @date   Mar 2022
+ *********************************************************************/
+
 #include "SuperMaximal.h"
 
 #include <algorithm>
@@ -6,19 +14,26 @@
 
 namespace CSE_584A
 {
-   struct Node
+   /**
+   * \brief Represents a node in a suffix tree.
+   *
+   * This class stores the left and right most descendants of the suffix tree
+   * as indexes into the suffix array. It stores the depth at which the node is from the root.
+   * It also stores information on whether it is a right super maximal node.
+   */
+   struct SuffixTreeNode
    {
-      int l = 0;
-      int r = 0;
-      int d = 0;
-      bool rightSuperMaximal = true;
-      Node() {}
-      Node(int l, int r, int d) : l(l), r(r), d(d) {}
+      int l = 0; /*!< The index into the suffix array of the leftmost descendant of the node. */
+      int r = 0; /*!< The index into the suffix array of the rightmost descendant of the node. */
+      int d = 0; /*!< The depth into the suffix array of the node from the root. */
+      bool rightSuperMaximal = true; /*!< Whether the node represents a right super maximal instance. */
+      SuffixTreeNode() {}
+      SuffixTreeNode(int l, int r, int d) : l(l), r(r), d(d) {}
    };
 
-   void PostOrderTraversalSuffixTree(const char* S, const int* A, const int* L, int n, std::function<void(const Node&)> visitMethod)
+   void PostOrderTraversalSuffixTree(const char* S, const int* A, const int* L, int n, std::function<void(const SuffixTreeNode&)> visitMethod)
    {
-      std::stack<Node> nodes;
+      std::stack<SuffixTreeNode> nodes;
 
       // Add root node
          // Leftmost point is beginning index of suffix array.
@@ -79,7 +94,7 @@ namespace CSE_584A
 
    void ComputeSuperMaximalRepeats(const char* S, const int* A, const int* L, int n, int k, std::function<void(const SuperMaximalMatchData&)> outputMethod)
    {
-      auto visitFunc = [S,A,k,outputMethod](const Node& node)
+      auto visitFunc = [S,A,k,outputMethod](const SuffixTreeNode& node)
       {
          // Check if the node is right supermaximal of length at least k
          if (node.rightSuperMaximal && node.d >= k)

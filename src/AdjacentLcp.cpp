@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   AdjacentLcp.cpp
+ * @brief  Provides method implementations related to the adjacent LCP array of a string
+ *
+ * @author Thomas Gibbons
+ * @date   Mar 2022
+ *********************************************************************/
+
 #include "AdjacentLcp.h"
 
 namespace CSE_584A

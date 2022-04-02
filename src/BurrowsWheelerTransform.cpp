@@ -1,3 +1,11 @@
+/*****************************************************************//**
+ * @file   BurrowsWheelerTransform.cpp
+ * @brief  Provides method implementations related to the Burrows-Wheeler transform of a string
+ *
+ * @author Thomas Gibbons
+ * @date   Mar 2022
+ *********************************************************************/
+
 #include "BurrowsWheelerTransform.h"
 
 namespace CSE_584A
